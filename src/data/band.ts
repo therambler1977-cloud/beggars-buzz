@@ -11,21 +11,21 @@ export const bandPhoto = { src: groupPhoto, alt: "The five members of Beggar's B
 export interface Member {
   name: string;
   role: string;
-  bio: string;
+  bio: string; // leave as '' to show just name and role
   photo?: ImageMetadata;
 }
 
-// TODO: a short bio for each member.
+// TODO: a short bio for each member. An empty bio ('') is simply left off the page.
 export const members: Member[] = [
-  { name: 'Zach Pizzolato', role: 'Vocals & guitar', bio: 'A sentence or two about Zach: years playing, favorite song to cover, day job.' },
-  { name: 'Tom Fairbairn', role: 'Vocals & keys', bio: 'A sentence or two about Tom: years playing, favorite song to cover, day job.' },
-  { name: 'Steve Wollard', role: 'Lead guitar', bio: 'A sentence or two about Steve: years playing, favorite song to cover, day job.' },
-  { name: 'Alex Hamer', role: 'Bass', bio: 'A sentence or two about Alex: years playing, favorite song to cover, day job.' },
-  { name: 'Marx Enuff', role: 'Drums', bio: 'A sentence or two about Marx: years playing, favorite song to cover, day job.' },
+  { name: 'Zach Pizzolato', role: 'Vocals & guitar', bio: '' },
+  { name: 'Tom Fairbairn', role: 'Vocals & keys', bio: '' },
+  { name: 'Steve Wollard', role: 'Lead guitar', bio: '' },
+  { name: 'Alex Hamer', role: 'Bass', bio: '' },
+  { name: 'Marx Enuff', role: 'Drums', bio: '' },
 ];
 
 // TODO: the band's story, shown above the lineup. One string per paragraph.
 export const story: string[] = [
   "Beggar's Buzz plays the rock & roll songs everybody knows the words to, from the 60s through the 90s.",
-  'Replace this with how the band got together, where you usually play, and what a night with you is like.',
+  // TODO: add how the band got together, where you usually play, and what a night with you is like.
 ];

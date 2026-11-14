@@ -21,7 +21,7 @@ const photos = await Promise.all(
 
 const ytId = (url: string) =>
   url.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/)?.[1] ?? (/^[\w-]{11}$/.test(url) ? url : '');
-const vids = videos.map((v) => ({ ...v, id: ytId(v.url) })).filter((v) => v.id);
+const vids = videos.map((v) => ({ ...v, id: v.url ? ytId(v.url) : '' })).filter((v) => v.file || v.id);
 ---
 <Base title="Photos & Video" description="Photos and live video of Beggar's Buzz, the classic rock cover band.">
   <header class="page-head">
@@ -32,6 +32,33 @@ const vids = videos.map((v) => ({ ...v, id: ytId(v.url) })).filter((v) => v.id);
   </header>
 
   <section class="section">
+    <div class="wrap">
+      <h2>Live video</h2>
+      {vids.length > 0 ? (
+        <div class="videos">
+          {vids.map((v) => (
+            <figure>
+              <div class="frame-16x9">
+                {v.file ? (
+                  <video controls playsinline preload="none" poster={v.poster} aria-label={v.title}>
+                    <source src={v.file} type="video/mp4" />
+                  </video>
+                ) : (
+                  <iframe src={`https://www.youtube-nocookie.com/embed/${v.id}`} title={v.title} loading="lazy"
+                    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+                )}
+              </div>
+              <figcaption>{v.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <p class="soon">Live videos are on the way. Check back soon.</p>
+      )}
+    </div>
+  </section>
+
+  <section class="section section--band">
     <div class="wrap">
       <h2>Photos</h2>
       {photos.length > 0 ? (
@@ -49,27 +76,6 @@ const vids = videos.map((v) => ({ ...v, id: ytId(v.url) })).filter((v) => v.id);
           <Image src={banner} alt="Beggar's Buzz poster: rock & roll songs you love from the 60s, 70s, 80s, 90s" widths={[600, 1000, 1600]} sizes="(max-width: 1120px) 100vw, 1120px" />
           <p class="soon">Gig photos coming soon.</p>
         </div>
-      )}
-    </div>
-  </section>
-
-  <section class="section section--band">
-    <div class="wrap">
-      <h2>Live video</h2>
-      {vids.length > 0 ? (
-        <div class="videos">
-          {vids.map((v) => (
-            <figure>
-              <div class="frame-16x9">
-                <iframe src={`https://www.youtube-nocookie.com/embed/${v.id}`} title={v.title} loading="lazy"
-                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
-              </div>
-              <figcaption>{v.title}</figcaption>
-            </figure>
-          ))}
-        </div>
-      ) : (
-        <p class="soon">Live videos are on the way. Check back soon.</p>
       )}
     </div>
   </section>
@@ -103,7 +109,7 @@ const vids = videos.map((v) => ({ ...v, id: ytId(v.url) })).filter((v) => v.id);
   .videos { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 24px; }
   figure { margin: 0; }
   .frame-16x9 { aspect-ratio: 16 / 9; border: 2px solid var(--cream); border-radius: 4px; overflow: hidden; box-shadow: 5px 5px 0 var(--navy); background: #000; }
-  iframe { width: 100%; height: 100%; border: 0; }
+  iframe, video { width: 100%; height: 100%; border: 0; display: block; object-fit: cover; }
   figcaption { margin-top: 12px; font: 500 1rem/1.3 var(--label); text-transform: uppercase; letter-spacing: 0.06em; color: var(--cream-dim); }
   .soon { color: var(--cream-dim); border: 1px dashed var(--ink-3); border-radius: var(--radius); padding: 24px; text-align: center; margin: 0; }
   .photos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(46%, 260px), 1fr)); gap: 12px; }
