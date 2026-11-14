@@ -20,9 +20,13 @@ export interface Show {
   note?: string;
 }
 
-// TODO: replace these samples with real gigs.
 export const shows: Show[] = [
-  { date: '2026-12-05', time: '8:00 PM', venue: 'Sample Venue', city: 'Your Town, IL', note: 'No cover' },
-  { date: '2026-12-19', time: '9:00 PM', venue: 'Another Sample Bar', city: 'Your Town, IL' },
-  { date: '2026-12-31', time: '9:00 PM', venue: "New Year's Eve Party", city: 'Your Town, IL', note: 'Tickets at the door' },
+  {
+    date: '2027-01-30',
+    time: '8:00 PM – 11:00 PM',
+    venue: 'Pub 78',
+    city: 'Brookfield, IL',
+    address: '3733 Grand Boulevard, Brookfield, IL 60513',
+    note: 'No cover',
+  },
 ];
