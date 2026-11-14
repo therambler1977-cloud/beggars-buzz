@@ -4,11 +4,12 @@ Everything unchecked below is placeholder or a guess. The site shows a "sample c
 
 - [ ] **Shows** (`src/data/shows.ts`): three sample gigs. Replace with real dates, venues, towns and addresses.
 - [x] **Song list** (`src/data/songs.ts`): the band's 36 songs, added Nov 14, 2026.
-- [ ] **Band members** (`src/data/band.ts`): four placeholder members (vocals, guitar, bass, drums). Real names, roles, bios and photos.
+- [ ] **Band members** (`src/data/band.ts`): five placeholder members. Roles (lead vocals & guitar, guitar, bass, keys, drums) are guessed from the gig photos. Real names, bios and headshots still needed.
 - [ ] **Band story** (`src/data/band.ts`): two placeholder paragraphs.
 - [ ] **Area** (`src/data/site.ts`): guessed as "the Chicagoland area".
 - [ ] **Social links** (`src/data/site.ts`): none set, so no icons show yet.
-- [ ] **Videos and photos** (`src/data/media.ts`, `src/assets/photos/`): none yet. The page shows the poster and "coming soon".
+- [x] **Photos**: four Pub 78 gig photos added Nov 14, 2026 (location data stripped).
+- [ ] **Videos** (`src/data/media.ts`): none yet. The page shows "coming soon".
 - [ ] **Book Us page** (`src/pages/book/index.astro`): "What we bring" says the band brings its own sound system for most rooms, sizes sets to the night, and takes requests at private events. Confirm or edit.
 - [ ] **Home page** (`src/pages/index.astro`): the three "where we fit" cards (bars and venues, private parties, festivals and fundraisers).
 - [ ] **Booking form key** (`src/data/site.ts`): `web3formsKey` is empty, so the form is disabled.

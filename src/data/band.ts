@@ -3,6 +3,10 @@
 //   import zach from '../assets/band/zach.jpg';
 // then set photo: zach. Members without a photo get the bee.
 import type { ImageMetadata } from 'astro';
+import groupPhoto from '../assets/photos/03-pub-78-band-photo.jpg';
+
+// The photo at the top of The Band page.
+export const bandPhoto = { src: groupPhoto, alt: "The five members of Beggar's Buzz on stage at Pub 78" };
 
 export interface Member {
   name: string;
@@ -11,11 +15,12 @@ export interface Member {
   photo?: ImageMetadata;
 }
 
-// TODO: replace with the real lineup.
+// TODO: real names and bios. The roles are a guess from the gig photos; fix as needed.
 export const members: Member[] = [
-  { name: 'Member Name', role: 'Lead vocals', bio: 'A sentence or two about this member: how long they have been playing, favorite song to cover, day job.' },
-  { name: 'Member Name', role: 'Lead guitar', bio: 'A sentence or two about this member.' },
-  { name: 'Member Name', role: 'Bass & vocals', bio: 'A sentence or two about this member.' },
+  { name: 'Member Name', role: 'Lead vocals & guitar', bio: 'A sentence or two about this member: how long they have been playing, favorite song to cover, day job.' },
+  { name: 'Member Name', role: 'Guitar', bio: 'A sentence or two about this member.' },
+  { name: 'Member Name', role: 'Bass', bio: 'A sentence or two about this member.' },
+  { name: 'Member Name', role: 'Keys', bio: 'A sentence or two about this member.' },
   { name: 'Member Name', role: 'Drums', bio: 'A sentence or two about this member.' },
 ];
 

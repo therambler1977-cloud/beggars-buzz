@@ -5,7 +5,10 @@
 // Add a caption by naming the file, e.g. "rusty-anchor-2026.jpg" shows as
 // "Rusty anchor 2026", or list captions below by file name.
 export const captions: Record<string, string> = {
-  // 'rusty-anchor-2026.jpg': 'Packed house at the Rusty Anchor',
+  '01-pub-78-on-stage.jpg': 'Live at Pub 78',
+  '02-pub-78-crowd.jpg': 'A full house at Pub 78',
+  '03-pub-78-band-photo.jpg': 'The band after the show at Pub 78',
+  '04-pub-78-guitar-and-bass.jpg': 'Guitar and bass up front at Pub 78',
 };
 
 // Videos: paste YouTube links. Either the full link or just the ID works.

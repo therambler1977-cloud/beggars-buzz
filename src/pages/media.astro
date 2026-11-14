@@ -33,27 +33,6 @@ const vids = videos.map((v) => ({ ...v, id: ytId(v.url) })).filter((v) => v.id);
 
   <section class="section">
     <div class="wrap">
-      <h2>Live video</h2>
-      {vids.length > 0 ? (
-        <div class="videos">
-          {vids.map((v) => (
-            <figure>
-              <div class="frame-16x9">
-                <iframe src={`https://www.youtube-nocookie.com/embed/${v.id}`} title={v.title} loading="lazy"
-                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
-              </div>
-              <figcaption>{v.title}</figcaption>
-            </figure>
-          ))}
-        </div>
-      ) : (
-        <p class="soon">Live videos are on the way. Check back soon.</p>
-      )}
-    </div>
-  </section>
-
-  <section class="section section--band">
-    <div class="wrap">
       <h2>Photos</h2>
       {photos.length > 0 ? (
         <ul class="photos">
@@ -70,6 +49,27 @@ const vids = videos.map((v) => ({ ...v, id: ytId(v.url) })).filter((v) => v.id);
           <Image src={banner} alt="Beggar's Buzz poster: rock & roll songs you love from the 60s, 70s, 80s, 90s" widths={[600, 1000, 1600]} sizes="(max-width: 1120px) 100vw, 1120px" />
           <p class="soon">Gig photos coming soon.</p>
         </div>
+      )}
+    </div>
+  </section>
+
+  <section class="section section--band">
+    <div class="wrap">
+      <h2>Live video</h2>
+      {vids.length > 0 ? (
+        <div class="videos">
+          {vids.map((v) => (
+            <figure>
+              <div class="frame-16x9">
+                <iframe src={`https://www.youtube-nocookie.com/embed/${v.id}`} title={v.title} loading="lazy"
+                  allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
+              </div>
+              <figcaption>{v.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <p class="soon">Live videos are on the way. Check back soon.</p>
       )}
     </div>
   </section>
