@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import wordmark from '../assets/wordmark.png';
+import { nav, site } from '../data/site';
+const path = Astro.url.pathname;
+---
+{site.draft && <div class="draft-bar">Preview: shows, songs and bios are sample content</div>}
+<header class="site-header">
+  <div class="wrap bar">
+    <a href="/" class="brand" aria-label={`${site.name} home`}>
+      <Image src={wordmark} alt="" width={150} widths={[150, 300]} sizes="150px" loading="eager" />
+    </a>
+    <details class="menu" open>
+      <summary aria-label="Menu"><span></span><span></span><span></span></summary>
+      <nav aria-label="Main">
+        <ul>
+          {nav.map((n) => (
+            <li><a href={n.href} class:list={[{ cta: n.href === '/book/' }]} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header { position: sticky; top: 0; z-index: 50; background: rgba(18, 13, 9, 0.94); backdrop-filter: blur(6px); border-bottom: 2px solid var(--red); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 76px; }
+  .brand img { width: 150px; }
+  summary { list-style: none; cursor: pointer; display: none; width: 44px; height: 44px; padding: 12px 9px; flex-direction: column; justify-content: space-between; border: 1px solid var(--ink-3); border-radius: var(--radius); }
+  summary::-webkit-details-marker { display: none; }
+  summary span { display: block; height: 2px; background: var(--cream); border-radius: 2px; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: 4px; }
+  nav a { display: block; padding: 10px 12px; font: 500 1rem/1 var(--label); text-transform: uppercase; letter-spacing: 0.08em; color: var(--cream); text-decoration: none; border-radius: var(--radius); }
+  nav a:hover { color: var(--gold); }
+  nav a[aria-current='page'] { color: var(--gold); }
+  nav a.cta { background: var(--red); border: 2px solid var(--cream); margin-left: 8px; padding: 9px 16px; }
+  nav a.cta:hover { background: var(--red-bright); color: var(--cream); }
+
+  @media (max-width: 860px) {
+    .bar { min-height: 64px; }
+    .brand img { width: 118px; }
+    summary { display: flex; }
+    .menu[open] summary { border-color: var(--gold); }
+    nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--ink); border-bottom: 2px solid var(--red); padding: 8px 16px 20px; }
+    ul { flex-direction: column; align-items: stretch; }
+    nav a { padding: 14px 4px; font-size: 1.15rem; border-bottom: 1px solid var(--ink-3); border-radius: 0; }
+    nav a.cta { margin: 14px 0 0; text-align: center; border-radius: var(--radius); }
+  }
+</style>
+
+<script>
+  // The menu starts open (so it works without JavaScript); on phones it collapses behind the button.
+  const menu = document.querySelector<HTMLDetailsElement>('.site-header .menu');
+  const wide = window.matchMedia('(min-width: 861px)');
+  const sync = () => { if (menu) menu.open = wide.matches; };
+  sync();
+  wide.addEventListener('change', sync);
+</script>

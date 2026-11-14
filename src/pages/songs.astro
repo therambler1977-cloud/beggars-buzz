@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import { songs } from '../data/songs';
+import { site } from '../data/site';
+
+const byDecade = site.decades.map((d) => ({
+  decade: d,
+  songs: songs.filter((s) => s.decade === d).sort((a, b) => a.artist.localeCompare(b.artist) || a.title.localeCompare(b.title)),
+})).filter((g) => g.songs.length);
+---
+<Base title="Song List" description="The Beggar's Buzz song list: classic rock covers from the 60s, 70s, 80s and 90s.">
+  <header class="page-head">
+    <div class="wrap">
+      <p class="label">The set list</p>
+      <h1>Song list</h1>
+      <p class="lede">Rock & roll songs you love from the {site.decades.join(', ')}. Looking for something that isn't here? Ask us. We take requests for private events.</p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="wrap">
+      <div class="tools">
+        <label for="q" class="visually-hidden">Search songs or artists</label>
+        <input id="q" type="search" placeholder="Search songs or artists" autocomplete="off" />
+        <div class="chips" role="group" aria-label="Jump to decade">
+          {byDecade.map((g) => <a href={`#d-${g.decade}`} class="chip">{g.decade}</a>)}
+        </div>
+      </div>
+      <p class="count" aria-live="polite"></p>
+      <div class="decades">
+        {byDecade.map((g) => (
+          <section class="decade" id={`d-${g.decade}`}>
+            <h2>The {g.decade}</h2>
+            <ul>
+              {g.songs.map((s) => (
+                <li data-q={`${s.title} ${s.artist}`.toLowerCase()}>
+                  <span class="t">{s.title}</span>
+                  <span class="a">{s.artist}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+      <p class="none" hidden>No songs match that search. <a href="/book/">Ask us about it</a>, we might know it.</p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const q = document.querySelector<HTMLInputElement>('#q')!;
+  const count = document.querySelector<HTMLElement>('.count')!;
+  const none = document.querySelector<HTMLElement>('.none')!;
+  q.addEventListener('input', () => {
+    const term = q.value.trim().toLowerCase();
+    let shown = 0;
+    document.querySelectorAll<HTMLElement>('.decade').forEach((sec) => {
+      let inSec = 0;
+      sec.querySelectorAll<HTMLElement>('li').forEach((li) => {
+        const hit = !term || (li.dataset.q ?? '').includes(term);
+        li.hidden = !hit;
+        if (hit) inSec++;
+      });
+      sec.hidden = inSec === 0;
+      shown += inSec;
+    });
+    count.textContent = term ? `${shown} song${shown === 1 ? '' : 's'} found` : '';
+    none.hidden = shown > 0;
+  });
+</script>
+
+<style>
+  .tools { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; margin-bottom: 12px; position: sticky; top: 78px; z-index: 5; background: var(--ink); padding: 10px 0; }
+  input { flex: 1 1 280px; max-width: 460px; font: inherit; color: var(--cream); background: var(--ink-2); border: 2px solid var(--ink-3); border-radius: var(--radius); padding: 12px 16px; }
+  input:focus { border-color: var(--gold); outline: none; }
+  .chips { display: flex; gap: 8px; }
+  .chip { font: 600 0.95rem/1 var(--label); letter-spacing: 0.06em; text-decoration: none; color: var(--cream); border: 1px solid var(--ink-3); background: var(--ink-2); border-radius: 999px; padding: 10px 16px; }
+  .chip:hover { border-color: var(--gold); color: var(--gold); }
+  .count { min-height: 1.4em; color: var(--cream-dim); margin: 0 0 8px; }
+  .decades { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .decade { background: var(--ink-2); border: 1px solid var(--ink-3); border-top: 4px solid var(--red); border-radius: var(--radius); padding: 22px 24px; scroll-margin-top: 150px; }
+  .decade[hidden] { display: none; }
+  .decade h2 { font-size: 1.8rem; color: var(--gold); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px dashed var(--ink-3); }
+  li:last-child { border-bottom: 0; }
+  li[hidden] { display: none; }
+  .t { font-weight: 600; }
+  .a { color: var(--cream-dim); text-align: right; }
+  .none { text-align: center; color: var(--cream-dim); }
+  @media (max-width: 760px) {
+    .decades { grid-template-columns: 1fr; }
+    .tools { top: 66px; }
+    li { flex-direction: column; gap: 0; }
+    .a { text-align: left; font-size: 0.95rem; }
+  }
+</style>

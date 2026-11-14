@@ -1,0 +1,16 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import bee from '../assets/bee.png';
+---
+<Base title="Page not found">
+  <section class="section center">
+    <div class="wrap">
+      <Image src={bee} alt="" width={180} widths={[180, 360]} sizes="180px" class="bee" />
+      <h1>Wrong turn, man</h1>
+      <p class="lede">That page wandered off. Maybe it went to get another round.</p>
+      <div class="btn-row"><a class="btn" href="/">Back to home</a><a class="btn btn--ghost" href="/shows/">See upcoming shows</a></div>
+    </div>
+  </section>
+</Base>
+<style>.bee { margin: 0 auto 20px; width: 180px; }</style>

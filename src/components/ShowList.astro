@@ -1,0 +1,71 @@
+---
+// A list of upcoming shows. Past shows are left out when the site builds, and a
+// small script also hides them in the browser so the list stays right between deploys.
+import { upcomingShows, dayName, monthName, dayNum, longDate, directionsUrl } from '../lib/shows';
+interface Props { limit?: number }
+const { limit } = Astro.props;
+const list = upcomingShows().slice(0, limit ?? 999);
+---
+<div class="shows" data-limit={limit ?? ''}>
+  <ol>
+    {list.map((s) => (
+      <li class="show" data-date={s.date}>
+        <time class="cal" datetime={s.date} aria-label={longDate(s.date)}>
+          <span class="dow">{dayName(s.date)}</span>
+          <span class="day">{dayNum(s.date)}</span>
+          <span class="mon">{monthName(s.date)}</span>
+        </time>
+        <div class="info">
+          <h3>{s.venue}</h3>
+          <p class="meta">
+            {[s.city, s.time].filter(Boolean).join(' · ')}
+            {s.note && <span class="note">{s.note}</span>}
+          </p>
+        </div>
+        <div class="links">
+          {s.address && <a class="btn btn--ghost sm" href={directionsUrl(s.address)} target="_blank" rel="noopener">Directions</a>}
+          {s.link && <a class="btn btn--ghost sm" href={s.link} target="_blank" rel="noopener">Details</a>}
+        </div>
+      </li>
+    ))}
+  </ol>
+  <p class="empty" hidden={list.length > 0}>
+    No public shows on the calendar right now. Check back soon, or <a href="/book/">book us for your event</a>.
+  </p>
+</div>
+
+<script>
+  const t = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date());
+  document.querySelectorAll<HTMLElement>('.shows').forEach((box) => {
+    const items = [...box.querySelectorAll<HTMLElement>('.show')];
+    items.forEach((li) => { if ((li.dataset.date ?? '') < t) li.remove(); });
+    if (!box.querySelector('.show')) box.querySelector<HTMLElement>('.empty')!.hidden = false;
+  });
+</script>
+
+<style>
+  ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .show {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px;
+    background: var(--ink-2); border: 1px solid var(--ink-3); border-left: 4px solid var(--red);
+    border-radius: var(--radius); padding: 16px 20px;
+  }
+  .cal { display: grid; justify-items: center; width: 72px; padding: 8px 0; background: var(--cream); color: var(--ink); border-radius: 4px; box-shadow: 3px 3px 0 var(--navy); line-height: 1; }
+  .dow, .mon { font: 600 0.8rem/1 var(--label); text-transform: uppercase; letter-spacing: 0.1em; }
+  .dow { color: var(--red); }
+  .day { font: 400 1.9rem/1.1 var(--display); }
+  h3 { margin: 0 0 4px; font-size: 1.35rem; }
+  .meta { margin: 0; color: var(--cream-dim); }
+  .note { display: inline-block; margin-left: 10px; font: 500 0.78rem/1 var(--label); text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); border: 1px solid currentColor; border-radius: 3px; padding: 4px 6px; vertical-align: 2px; }
+  .links { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+  .sm { padding: 10px 14px; font-size: 0.85rem; }
+  .empty { background: var(--ink-2); border: 1px dashed var(--ink-3); border-radius: var(--radius); padding: 24px; text-align: center; color: var(--cream-dim); margin: 0; }
+  @media (max-width: 640px) {
+    .show { grid-template-columns: auto 1fr; gap: 14px 16px; padding: 14px; }
+    .cal { width: 62px; }
+    .links { grid-column: 1 / -1; justify-content: stretch; }
+    .links .btn { flex: 1; }
+    .links:empty { display: none; }
+    .note { display: table; margin: 6px 0 0; }
+  }
+</style>
