@@ -1,9 +1,9 @@
 # Content to confirm or replace
 
-Everything below is placeholder or a guess. The site shows a "sample content" bar until `draft` is set to `false` in `src/data/site.ts`.
+Everything unchecked below is placeholder or a guess. The site shows a "sample content" bar until `draft` is set to `false` in `src/data/site.ts`.
 
 - [ ] **Shows** (`src/data/shows.ts`): three sample gigs. Replace with real dates, venues, towns and addresses.
-- [ ] **Song list** (`src/data/songs.ts`): nine example classic rock songs. Replace with the real set list.
+- [x] **Song list** (`src/data/songs.ts`): the band's 36 songs, added Nov 14, 2026.
 - [ ] **Band members** (`src/data/band.ts`): four placeholder members (vocals, guitar, bass, drums). Real names, roles, bios and photos.
 - [ ] **Band story** (`src/data/band.ts`): two placeholder paragraphs.
 - [ ] **Area** (`src/data/site.ts`): guessed as "the Chicagoland area".
