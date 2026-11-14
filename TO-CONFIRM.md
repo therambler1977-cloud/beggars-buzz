@@ -4,7 +4,7 @@ Everything unchecked below is placeholder or a guess. The site shows a "sample c
 
 - [x] **Shows** (`src/data/shows.ts`): Pub 78 on Jan 30, 2027 added Nov 14, 2026. Address taken from the bar-sites Pub 78 demo (3733 Grand Boulevard).
 - [x] **Song list** (`src/data/songs.ts`): the band's 36 songs, added Nov 14, 2026.
-- [ ] **Band members** (`src/data/band.ts`): five placeholder members. Roles (lead vocals & guitar, guitar, bass, keys, drums) are guessed from the gig photos. Real names, bios and headshots still needed.
+- [ ] **Band members** (`src/data/band.ts`): names and roles added Nov 14, 2026. Bios and headshots still needed.
 - [ ] **Band story** (`src/data/band.ts`): two placeholder paragraphs.
 - [ ] **Area** (`src/data/site.ts`): guessed as "the Chicagoland area".
 - [ ] **Social links** (`src/data/site.ts`): none set, so no icons show yet.

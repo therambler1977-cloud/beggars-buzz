@@ -15,13 +15,13 @@ export interface Member {
   photo?: ImageMetadata;
 }
 
-// TODO: real names and bios. Roles other than Zach's are a guess from the gig photos; fix as needed.
+// TODO: a short bio for each member.
 export const members: Member[] = [
   { name: 'Zach Pizzolato', role: 'Vocals & guitar', bio: 'A sentence or two about Zach: years playing, favorite song to cover, day job.' },
-  { name: 'Member Name', role: 'Guitar', bio: 'A sentence or two about this member.' },
-  { name: 'Member Name', role: 'Bass', bio: 'A sentence or two about this member.' },
-  { name: 'Member Name', role: 'Keys', bio: 'A sentence or two about this member.' },
-  { name: 'Member Name', role: 'Drums', bio: 'A sentence or two about this member.' },
+  { name: 'Tom Fairbairn', role: 'Vocals & keys', bio: 'A sentence or two about Tom: years playing, favorite song to cover, day job.' },
+  { name: 'Steve Wollard', role: 'Lead guitar', bio: 'A sentence or two about Steve: years playing, favorite song to cover, day job.' },
+  { name: 'Alex Hamer', role: 'Bass', bio: 'A sentence or two about Alex: years playing, favorite song to cover, day job.' },
+  { name: 'Marx Enuff', role: 'Drums', bio: 'A sentence or two about Marx: years playing, favorite song to cover, day job.' },
 ];
 
 // TODO: the band's story, shown above the lineup. One string per paragraph.
