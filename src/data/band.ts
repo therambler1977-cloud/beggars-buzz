@@ -15,9 +15,9 @@ export interface Member {
   photo?: ImageMetadata;
 }
 
-// TODO: real names and bios. The roles are a guess from the gig photos; fix as needed.
+// TODO: real names and bios. Roles other than Zach's are a guess from the gig photos; fix as needed.
 export const members: Member[] = [
-  { name: 'Member Name', role: 'Lead vocals & guitar', bio: 'A sentence or two about this member: how long they have been playing, favorite song to cover, day job.' },
+  { name: 'Zach Pizzolato', role: 'Vocals & guitar', bio: 'A sentence or two about Zach: how long he has been playing, favorite song to cover, day job.' },
   { name: 'Member Name', role: 'Guitar', bio: 'A sentence or two about this member.' },
   { name: 'Member Name', role: 'Bass', bio: 'A sentence or two about this member.' },
   { name: 'Member Name', role: 'Keys', bio: 'A sentence or two about this member.' },
