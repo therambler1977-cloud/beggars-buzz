@@ -1,0 +1,123 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+const connected = Boolean(site.web3formsKey);
+const types = ['Bar or venue', 'Private party', 'Festival or community event', 'Fundraiser or benefit', 'Corporate event', 'Wedding', 'Something else'];
+---
+<Base title="Book Us" description="Book Beggar's Buzz, a classic rock cover band, for your bar, venue, private party, festival or fundraiser.">
+  <header class="page-head">
+    <div class="wrap">
+      <p class="label">Book the band</p>
+      <h1>Let's get you buzzing</h1>
+      <p class="lede">Tell us about your event and we'll get back to you about availability and pricing, usually within a couple of days.</p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="wrap layout">
+      <form class="card frame" id="book" action="https://api.web3forms.com/submit" method="POST" data-connected={connected ? '1' : ''}>
+        {!connected && (
+          <p class="notice" role="note">The booking form isn't connected yet, so messages can't be sent. (Site owner: add the Web3Forms key in <code>src/data/site.ts</code>.)</p>
+        )}
+        <input type="hidden" name="access_key" value={site.web3formsKey} />
+        <input type="hidden" name="subject" value={`New booking request from ${site.name} website`} />
+        <input type="hidden" name="from_name" value={`${site.name} website`} />
+        <input type="hidden" name="redirect" value={`${site.url}/book/thanks/`} />
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <div class="row">
+          <label><span>Your name <span class="req">*</span></span><input name="name" required autocomplete="name" /></label>
+          <label><span>Email <span class="req">*</span></span><input name="email" type="email" required autocomplete="email" /></label>
+        </div>
+        <div class="row">
+          <label><span>Phone</span><input name="phone" type="tel" autocomplete="tel" /></label>
+          <label><span>Event date</span><input name="event_date" type="date" /></label>
+        </div>
+        <div class="row">
+          <label><span>Type of event</span>
+            <select name="event_type">
+              <option value="">Choose one</option>
+              {types.map((t) => <option>{t}</option>)}
+            </select>
+          </label>
+          <label><span>Event location</span><input name="location" placeholder="Venue or town" /></label>
+        </div>
+        <label><span>Tell us more <span class="req">*</span></span>
+          <textarea name="message" rows="5" required placeholder="Expected crowd, set times, indoor or outdoor, budget, songs you'd love to hear..."></textarea>
+        </label>
+        <button class="btn" type="submit" disabled={!connected}>Send booking request</button>
+        <p class="status" aria-live="polite"></p>
+      </form>
+
+      <aside class="side">
+        <div class="card">
+          <h2>What we bring</h2>
+          <ul class="ticks">
+            <li>Classic rock from the 60s through the 90s</li>
+            <li>Sets sized to your night, from one long set to three or more</li>
+            <li>Our own sound system for most rooms</li>
+            <li>Song requests for private events</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Before you ask</h2>
+          <p>Have a look at the <a href="/songs/">song list</a> and <a href="/media/">live video</a> to hear what a night with us sounds like.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Send without leaving the page; if JavaScript is off the form posts normally
+  // and Web3Forms redirects to /book/thanks/.
+  const form = document.querySelector<HTMLFormElement>('#book')!;
+  const status = form.querySelector<HTMLElement>('.status')!;
+  const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+  form.addEventListener('submit', async (e) => {
+    if (!form.dataset.connected) return;
+    e.preventDefault();
+    btn.disabled = true;
+    status.className = 'status';
+    status.textContent = 'Sending...';
+    try {
+      const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message);
+      form.reset();
+      status.className = 'status ok';
+      status.textContent = "Thanks! Your request is in, and we'll be in touch soon.";
+    } catch {
+      status.className = 'status err';
+      status.textContent = "Sorry, that didn't go through. Please try again in a minute, or reach us on social media.";
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+
+<style>
+  .layout { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 28px; align-items: start; }
+  form { display: grid; gap: 18px; padding: clamp(22px, 4vw, 36px); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  label { display: grid; gap: 6px; font: 500 0.95rem/1.2 var(--label); text-transform: uppercase; letter-spacing: 0.08em; color: var(--cream-dim); }
+  .req { color: var(--red-bright); }
+  input, select, textarea { font: 400 1.05rem/1.4 var(--body); text-transform: none; letter-spacing: 0; color: var(--cream); background: var(--ink); border: 2px solid var(--ink-3); border-radius: var(--radius); padding: 12px 14px; width: 100%; min-height: 48px; }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold); outline: none; }
+  input[type='date'] { color-scheme: dark; }
+  textarea { resize: vertical; }
+  .hp { position: absolute; left: -9999px; }
+  button[disabled] { opacity: 0.55; cursor: not-allowed; }
+  .notice { margin: 0; padding: 12px 14px; border: 1px dashed var(--gold); border-radius: var(--radius); color: var(--gold); font-size: 0.95rem; }
+  .status { margin: 0; min-height: 1.5em; }
+  .status.ok { color: #9fd68b; }
+  .status.err { color: #ff9a85; }
+  .side { display: grid; gap: 20px; }
+  .side h2 { font-size: 1.5rem; }
+  .side p { margin: 0; color: var(--cream-dim); }
+  .ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .ticks li { padding-left: 30px; position: relative; color: var(--cream-dim); }
+  .ticks li::before { content: '\2605'; position: absolute; left: 0; color: var(--red-bright); }
+  @media (max-width: 860px) {
+    .layout, .row { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+// Tells Google who the band is and lists upcoming shows as events.
+import { site } from '../data/site';
+import { upcomingShows, isoStart } from '../lib/shows';
+
+const band = {
+  '@type': 'MusicGroup',
+  '@id': `${site.url}/#band`,
+  name: site.name,
+  url: site.url,
+  description: site.description,
+  genre: ['Classic rock', 'Rock and roll'],
+  image: `${site.url}/og-image.jpg`,
+  sameAs: Object.values(site.social).filter(Boolean),
+};
+const events = upcomingShows()
+  .filter((s) => s.venue !== 'Private event' && !site.draft)
+  .map((s) => ({
+    '@type': 'MusicEvent',
+    name: `${site.name} at ${s.venue}`,
+    startDate: isoStart(s),
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    location: { '@type': 'Place', name: s.venue, address: s.address ?? s.city ?? '' },
+    performer: { '@id': `${site.url}/#band` },
+    ...(s.link ? { url: s.link } : {}),
+  }));
+const data = { '@context': 'https://schema.org', '@graph': [band, ...events] };
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

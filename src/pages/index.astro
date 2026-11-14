@@ -1,0 +1,130 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import ShowList from '../components/ShowList.astro';
+import bee from '../assets/bee.png';
+import wordmark from '../assets/wordmark.png';
+import { site } from '../data/site';
+import { songs } from '../data/songs';
+
+const occasions = [
+  { title: 'Bars & venues', text: 'A full night of songs your crowd already knows the words to, with sets paced to keep people at the bar and on the dance floor.' },
+  { title: 'Private parties', text: 'Birthdays, anniversaries, block parties and backyard bashes. We bring the sound and the good time.' },
+  { title: 'Festivals & fundraisers', text: 'Fests, community events and benefits. Classic rock gets every age group out of their lawn chairs.' },
+];
+---
+<Base>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="bee">
+        <Image src={bee} alt="The Beggar's Buzz bee, playing guitar with a beer in hand" widths={[280, 420, 560]} sizes="(max-width: 760px) 220px, 380px" loading="eager" fetchpriority="high" />
+      </div>
+      <div class="copy">
+        <h1>
+          <span class="visually-hidden">{site.name}</span>
+          <Image src={wordmark} alt="" widths={[400, 700, 1000, 1400]} sizes="(max-width: 760px) 90vw, 600px" loading="eager" />
+        </h1>
+        <p class="tagline">
+          <span class="rule"></span>{site.tagline}<span class="rule"></span>
+        </p>
+        <p class="decades">From the {site.decades.join(', ')}</p>
+        <div class="btn-row">
+          <a class="btn" href="/book/">Book the band</a>
+          <a class="btn btn--ghost" href="/shows/">See upcoming shows</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="label label--left">Catch us live</p>
+      <div class="head-row">
+        <h2>Upcoming shows</h2>
+        <a href="/shows/" class="more">All shows &rarr;</a>
+      </div>
+      <ShowList limit={3} />
+    </div>
+  </section>
+
+  <section class="section section--band">
+    <div class="wrap center">
+      <p class="label">Book Beggar's Buzz</p>
+      <h2>Your crowd knows every word</h2>
+      <p class="lede">
+        We're a classic rock cover band from {site.area}, playing the songs people grew up with and still turn up in the car. Here's where we fit:
+      </p>
+      <div class="occasions">
+        {occasions.map((o) => (
+          <div class="card frame">
+            <h3>{o.title}</h3>
+            <p>{o.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="btn-row">
+        <a class="btn" href="/book/">Check our availability</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <p class="label label--left">The set list</p>
+        <h2>{songs.length}+ songs and counting</h2>
+        <p class="lede">Four decades of rock & roll, from the 60s through the 90s. Search the whole list to see if your favorite made the cut.</p>
+        <a class="btn btn--ghost" href="/songs/">See the song list</a>
+      </div>
+      <ul class="sample">
+        {songs.slice(0, 6).map((s) => (
+          <li><span class="t">{s.title}</span><span class="a">{s.artist}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    position: relative; overflow: hidden;
+    padding: clamp(36px, 7vw, 80px) 0 clamp(48px, 8vw, 96px);
+    border-bottom: 2px solid var(--red);
+    background:
+      radial-gradient(circle at 26% 55%, rgba(18, 13, 9, 0) 0, rgba(18, 13, 9, 0.2) 28%, var(--ink) 72%),
+      repeating-conic-gradient(from 0deg at 26% 55%, rgba(184, 54, 31, 0.28) 0deg 6deg, rgba(18, 13, 9, 0) 6deg 14deg);
+  }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: center; gap: clamp(20px, 4vw, 56px); }
+  .bee img { width: 100%; max-width: 380px; margin-inline: auto; filter: drop-shadow(6px 8px 0 rgba(0, 0, 0, 0.45)); }
+  .copy h1 { margin: 0 0 18px; }
+  .copy h1 img { width: 100%; max-width: 600px; }
+  .tagline { display: flex; align-items: center; gap: 14px; font: 600 clamp(1.15rem, 2.6vw, 1.75rem)/1.2 var(--label); text-transform: uppercase; letter-spacing: 0.06em; color: var(--cream); margin: 0 0 6px; max-width: 600px; }
+  .rule { flex: 1; height: 0; border-top: 3px double var(--red); min-width: 18px; }
+  .decades { font: 600 clamp(1.05rem, 2.3vw, 1.55rem)/1.2 var(--label); text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin: 0 0 28px; max-width: 600px; text-align: center; }
+  .copy .btn-row { max-width: 600px; justify-content: center; }
+
+  .head-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+  .more { font: 600 0.95rem/1 var(--label); text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; white-space: nowrap; }
+
+  .occasions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 36px 0; text-align: left; }
+  .occasions .card { padding: 28px; }
+  .occasions p { margin: 0; color: var(--cream-dim); }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .sample { list-style: none; margin: 0; padding: 8px 24px; background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--radius); }
+  .sample li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px dashed var(--ink-3); }
+  .sample li:last-child { border-bottom: 0; }
+  .sample .t { font-weight: 600; }
+  .sample .a { color: var(--cream-dim); text-align: right; }
+
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero { background:
+      radial-gradient(circle at 50% 22%, rgba(18, 13, 9, 0) 0, rgba(18, 13, 9, 0.2) 30%, var(--ink) 75%),
+      repeating-conic-gradient(from 0deg at 50% 22%, rgba(184, 54, 31, 0.28) 0deg 6deg, rgba(18, 13, 9, 0) 6deg 14deg); }
+    .bee img { max-width: 220px; }
+    .copy h1 img, .tagline, .decades, .copy .btn-row { margin-inline: auto; }
+    .copy .btn-row .btn { flex: 1 1 100%; }
+    .occasions, .split { grid-template-columns: 1fr; }
+  }
+</style>

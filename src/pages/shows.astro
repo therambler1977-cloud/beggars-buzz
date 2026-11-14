@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import ShowList from '../components/ShowList.astro';
+---
+<Base title="Upcoming Shows" description="Where to catch Beggar's Buzz live: upcoming classic rock shows, dates, times and venues.">
+  <header class="page-head">
+    <div class="wrap">
+      <p class="label">Catch us live</p>
+      <h1>Upcoming shows</h1>
+      <p class="lede">Come on out, grab a drink and sing along. Private events aren't listed here.</p>
+    </div>
+  </header>
+  <section class="section">
+    <div class="wrap narrow">
+      <ShowList />
+      <div class="cta card frame">
+        <h2>Want us at your place?</h2>
+        <p>We play bars, private parties, festivals and fundraisers.</p>
+        <a class="btn" href="/book/">Book the band</a>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .narrow { max-width: 860px; }
+  .cta { margin-top: 48px; text-align: center; padding: 36px 24px; }
+  .cta h2 { font-size: 1.8rem; }
+  .cta p { color: var(--cream-dim); }
+</style>

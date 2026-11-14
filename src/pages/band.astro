@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import bee from '../assets/bee.png';
+import { members, story } from '../data/band';
+---
+<Base title="The Band" description="Meet Beggar's Buzz, the classic rock cover band.">
+  <header class="page-head">
+    <div class="wrap">
+      <p class="label">Who we are</p>
+      <h1>The band</h1>
+    </div>
+  </header>
+  <section class="section">
+    <div class="wrap story">
+      {story.map((p, i) => <p class:list={[{ lede: i === 0 }]}>{p}</p>)}
+    </div>
+    <div class="wrap lineup">
+      {members.map((m) => (
+        <article class="card frame member">
+          <div class:list={['photo', { fallback: !m.photo }]}>
+            {m.photo
+              ? <Image src={m.photo} alt={m.name} widths={[300, 600]} sizes="(max-width: 600px) 90vw, 280px" />
+              : <Image src={bee} alt="" widths={[160, 320]} sizes="160px" />}
+          </div>
+          <h2>{m.name}</h2>
+          <p class="role">{m.role}</p>
+          <p class="bio">{m.bio}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</Base>
+<style>
+  .story { max-width: 760px; margin-bottom: 48px; text-align: center; }
+  .story .lede { font-size: 1.3rem; color: var(--cream); }
+  .story p { color: var(--cream-dim); margin-inline: auto; }
+  .lineup { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+  .member { text-align: center; padding: 22px 22px 26px; }
+  .photo { aspect-ratio: 4 / 5; border-radius: 4px; overflow: hidden; margin-bottom: 18px; background: var(--ink-3); border: 2px solid var(--cream); box-shadow: 4px 4px 0 var(--navy); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+  .photo.fallback { display: grid; place-items: center; background: radial-gradient(circle, #3a2414, var(--ink-3)); }
+  .photo.fallback img { width: 62%; height: auto; object-fit: contain; opacity: 0.85; }
+  h2 { font-size: 1.5rem; color: var(--cream); margin-bottom: 4px; }
+  .role { font: 600 0.95rem/1.2 var(--label); text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 12px; }
+  .bio { color: var(--cream-dim); margin: 0; font-size: 1rem; }
+</style>
