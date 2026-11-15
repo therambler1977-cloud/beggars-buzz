@@ -1,0 +1,54 @@
+---
+// Recent shows, newest first. Every show is rendered; ones that haven't happened
+// yet are hidden here at build time and again in the browser, so a gig moves
+// from "Upcoming" to "Recent" on its own the day after it happens.
+import { allShowsNewestFirst, today, longDate } from '../lib/shows';
+const t = today();
+const list = allShowsNewestFirst();
+const anyPast = list.some((s) => s.date < t);
+---
+<section class="past" hidden={!anyPast} aria-labelledby="past-h">
+  <h2 id="past-h">Recent shows</h2>
+  <ul>
+    {list.map((s) => (
+      <li data-date={s.date} hidden={s.date >= t}>
+        <time datetime={s.date}>{longDate(s.date)}</time>
+        <span class="venue">
+          {s.venue}
+          {s.private && s.venue !== 'Private event' && <span class="tag">Private event</span>}
+        </span>
+        <span class="city">{s.city}</span>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<script>
+  const t = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Chicago' }).format(new Date());
+  const past = document.querySelector<HTMLElement>('section.past');
+  if (past) {
+    let n = 0;
+    past.querySelectorAll<HTMLElement>('li').forEach((li) => {
+      const isPast = (li.dataset.date ?? '') < t;
+      li.hidden = !isPast;
+      if (isPast) n++;
+    });
+    past.hidden = n === 0;
+  }
+</script>
+
+<style>
+  .past { margin-top: 56px; }
+  h2 { font-size: 1.8rem; color: var(--gold); }
+  ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink-3); }
+  li { display: grid; grid-template-columns: 15rem 1fr auto; gap: 6px 20px; align-items: baseline; padding: 14px 4px; border-bottom: 1px solid var(--ink-3); color: var(--cream-dim); }
+  li[hidden] { display: none; }
+  time { font: 500 0.95rem/1.3 var(--label); text-transform: uppercase; letter-spacing: 0.06em; color: var(--cream-dim); }
+  .venue { color: var(--cream); font-weight: 600; }
+  .tag { display: inline-block; margin-left: 10px; font: 500 0.72rem/1 var(--label); text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); border: 1px solid currentColor; border-radius: 3px; padding: 3px 5px; vertical-align: 2px; }
+  .city { text-align: right; }
+  @media (max-width: 640px) {
+    li { grid-template-columns: 1fr; gap: 2px; }
+    .city { text-align: left; }
+  }
+</style>

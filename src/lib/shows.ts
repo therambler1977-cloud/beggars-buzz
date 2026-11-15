@@ -11,6 +11,11 @@ export function upcomingShows(): Show[] {
   return [...shows].filter((s) => s.date >= t).sort((a, b) => a.date.localeCompare(b.date));
 }
 
+/** Every show, newest first (the page decides which are past). */
+export function allShowsNewestFirst(): Show[] {
+  return [...shows].sort((a, b) => b.date.localeCompare(a.date));
+}
+
 function parts(date: string) {
   const [y, m, d] = date.split('-').map(Number);
   return new Date(Date.UTC(y, m - 1, d, 12));
