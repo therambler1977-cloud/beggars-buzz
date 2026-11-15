@@ -8,7 +8,7 @@ Everything unchecked below is placeholder or a guess. `draft` was turned off on 
 - [ ] **Band story** (`src/data/band.ts`): one generic sentence for now.
 - [ ] **Area** (`src/data/site.ts`): guessed as "the Chicagoland area".
 - [ ] **Social links** (`src/data/site.ts`): none set, so no icons show yet.
-- [x] **Photos**: four Pub 78 gig photos added Nov 14, 2026 and two block party photos added Nov 15, 2026 (location data stripped).
+- [x] **Photos**: four Pub 78 gig photos added Nov 14, 2026 plus two block party photos and one more Pub 78 shot added Nov 15, 2026 (location data stripped).
 - [x] **Videos**: two Pub 78 clips added Nov 14, 2026 (compressed to 720p, metadata stripped).
 - [ ] **Book Us page** (`src/pages/book/index.astro`): "What we bring" says the band brings its own sound system for most rooms, sizes sets to the night, and takes requests at private events. Confirm or edit.
 - [ ] **Home page** (`src/pages/index.astro`): the three "where we fit" cards (bars and venues, private parties, festivals and fundraisers).
