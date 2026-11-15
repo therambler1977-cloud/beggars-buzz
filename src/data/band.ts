@@ -3,24 +3,29 @@
 //   import zach from '../assets/band/zach.jpg';
 // then set photo: zach. Members without a photo get the bee.
 import type { ImageMetadata } from 'astro';
+import groupPhoto from '../assets/photos/03-pub-78-band-photo.jpg';
+
+// The photo at the top of The Band page.
+export const bandPhoto = { src: groupPhoto, alt: "The five members of Beggar's Buzz on stage at Pub 78" };
 
 export interface Member {
   name: string;
   role: string;
-  bio: string;
+  bio: string; // leave as '' to show just name and role
   photo?: ImageMetadata;
 }
 
-// TODO: replace with the real lineup.
+// TODO: a short bio for each member. An empty bio ('') is simply left off the page.
 export const members: Member[] = [
-  { name: 'Member Name', role: 'Lead vocals', bio: 'A sentence or two about this member: how long they have been playing, favorite song to cover, day job.' },
-  { name: 'Member Name', role: 'Lead guitar', bio: 'A sentence or two about this member.' },
-  { name: 'Member Name', role: 'Bass & vocals', bio: 'A sentence or two about this member.' },
-  { name: 'Member Name', role: 'Drums', bio: 'A sentence or two about this member.' },
+  { name: 'Zach Pizzolato', role: 'Vocals & guitar', bio: '' },
+  { name: 'Tom Fairbairn', role: 'Vocals & keys', bio: '' },
+  { name: 'Steve Wollard', role: 'Lead guitar', bio: '' },
+  { name: 'Alex Hamer', role: 'Bass', bio: '' },
+  { name: 'Marx Enuff', role: 'Drums', bio: '' },
 ];
 
 // TODO: the band's story, shown above the lineup. One string per paragraph.
 export const story: string[] = [
   "Beggar's Buzz plays the rock & roll songs everybody knows the words to, from the 60s through the 90s.",
-  'Replace this with how the band got together, where you usually play, and what a night with you is like.',
+  // TODO: add how the band got together, where you usually play, and what a night with you is like.
 ];

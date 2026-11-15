@@ -12,7 +12,7 @@ export const site = {
 
   // While this is true, every page shows a thin "sample content" bar so nobody mistakes
   // placeholder shows, songs or bios for the real thing. Set it to false before going live.
-  draft: true,
+  draft: false,
 
   // Social links. Leave a value empty ('') to hide that icon.
   social: {
