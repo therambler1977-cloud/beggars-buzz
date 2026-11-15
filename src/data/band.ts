@@ -8,6 +8,7 @@ import zachPhoto from '../assets/band/zach.jpg';
 import stevePhoto from '../assets/band/steve.jpg';
 import tomPhoto from '../assets/band/tom.jpg';
 import alexPhoto from '../assets/band/alex.jpg';
+import marxPhoto from '../assets/band/marx.jpg';
 
 // The photo at the top of The Band page.
 export const bandPhoto = { src: groupPhoto, alt: "The five members of Beggar's Buzz on stage at Pub 78" };
@@ -25,7 +26,7 @@ export const members: Member[] = [
   { name: 'Tom Fairbairn', role: 'Vocals & keys', bio: '', photo: tomPhoto },
   { name: 'Steve Wollard', role: 'Lead guitar', bio: '', photo: stevePhoto },
   { name: 'Alex Hamer', role: 'Bass', bio: '', photo: alexPhoto },
-  { name: 'Marx Enuff', role: 'Drums', bio: '' },
+  { name: 'Marx Enuff', role: 'Drums', bio: '', photo: marxPhoto },
 ];
 
 // TODO: the band's story, shown above the lineup. One string per paragraph.
