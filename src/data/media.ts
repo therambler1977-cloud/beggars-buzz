@@ -24,10 +24,13 @@ export interface Video {
   file?: string;
   poster?: string;
   url?: string;
+  portrait?: boolean; // true for a clip filmed upright on a phone
 }
 
 export const videos: Video[] = [
   { title: 'Live at Pub 78', file: '/videos/pub-78-live.mp4', poster: '/videos/pub-78-live.jpg' },
   { title: 'Packed dance floor at Pub 78', file: '/videos/pub-78-dance-floor.mp4', poster: '/videos/pub-78-dance-floor.jpg' },
+  { title: 'The full band at Pub 78', file: '/videos/pub-78-full-band.mp4', poster: '/videos/pub-78-full-band.jpg' },
+  { title: 'Steve on lead guitar at Pub 78', file: '/videos/pub-78-steve-solo.mp4', poster: '/videos/pub-78-steve-solo.jpg', portrait: true },
   // { title: 'Live at the Rusty Anchor', url: 'https://www.youtube.com/watch?v=XXXXXXXXXXX' },
 ];
