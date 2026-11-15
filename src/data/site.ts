@@ -22,10 +22,11 @@ export const site = {
     tiktok: '',
   },
 
-  // Booking form. Get a free access key at https://web3forms.com by entering the email
-  // that should receive booking requests, then paste the key here. Until it is set, the
-  // form shows a "not connected yet" note instead of sending.
-  web3formsKey: '',
+  // Booking form, sent through Formspree (https://formspree.io). In Formspree,
+  // create a form that emails the band, then copy its form ID: the part after
+  // /f/ in its endpoint, e.g. 'xyzabcde' from https://formspree.io/f/xyzabcde.
+  // Until it is set, the form shows a "not connected yet" note instead of sending.
+  formspreeId: '',
 };
 
 export const nav = [

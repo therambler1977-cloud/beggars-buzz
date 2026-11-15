@@ -21,7 +21,7 @@ npm run build     # builds the finished site into dist/
 | Band members, bios and the band's story | `src/data/band.ts` (member photos go in `src/assets/band/`) |
 | Gig photos | Drop image files into `src/assets/photos/` |
 | Videos | `src/data/media.ts` (paste YouTube links) |
-| Social links, area you play, booking form key | `src/data/site.ts` |
+| Social links, area you play, booking form (Formspree ID) | `src/data/site.ts` |
 | Page text | `src/pages/*.astro` (one file per page) |
 | Colors and fonts | `src/styles/global.css` (top of the file) |
 | Logo, bee and poster art | `src/assets/` |
@@ -34,7 +34,7 @@ Search the code for `TODO` to find what still needs real content, and see `TO-CO
 
 1. Replace the sample shows, songs and bios.
 2. Set `draft: false` in `src/data/site.ts`. This removes the "sample content" bar and lets Google index the site.
-3. Connect the booking form: go to https://web3forms.com, enter the email that should get booking requests, and paste the access key it emails you into `web3formsKey` in `src/data/site.ts`.
+3. Connect the booking form: in Formspree, create a form that emails the band, and paste its form ID (the part after `/f/` in the endpoint) into `formspreeId` in `src/data/site.ts`.
 
 ## Deploying on Cloudflare Pages
 

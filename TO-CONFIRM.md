@@ -12,4 +12,4 @@ Everything unchecked below is placeholder or a guess. `draft` was turned off on 
 - [x] **Videos**: two Pub 78 clips added Nov 14, 2026 and two more Nov 15, 2026 (compressed to 720p, metadata stripped).
 - [ ] **Book Us page** (`src/pages/book/index.astro`): "What we bring" says the band brings its own sound system for most rooms, sizes sets to the night, and takes requests at private events. Confirm or edit.
 - [ ] **Home page** (`src/pages/index.astro`): the three "where we fit" cards (bars and venues, private parties, festivals and fundraisers).
-- [ ] **Booking form key** (`src/data/site.ts`): `web3formsKey` is empty, so the form is disabled.
+- [ ] **Booking form** (`src/data/site.ts`): switched to Formspree Nov 15, 2026. `formspreeId` is empty, so the form is disabled.
