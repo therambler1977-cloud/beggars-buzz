@@ -4,7 +4,7 @@ Everything unchecked below is placeholder or a guess. `draft` was turned off on 
 
 - [x] **Shows** (`src/data/shows.ts`): Pub 78 on Jan 30, 2027 added Nov 14, 2026. Address taken from the bar-sites Pub 78 demo (3733 Grand Boulevard).
 - [x] **Song list** (`src/data/songs.ts`): the band's 36 songs, added Nov 14, 2026.
-- [ ] **Band members** (`src/data/band.ts`): names and roles added Nov 14, 2026. Bios are blank (hidden) until Zach sends them; Zach's photo added Nov 15, 2026; other headshots optional.
+- [ ] **Band members** (`src/data/band.ts`): names and roles added Nov 14, 2026. Bios are blank (hidden) until Zach sends them; Zach's and Steve's photos added Nov 15, 2026; other headshots optional.
 - [ ] **Band story** (`src/data/band.ts`): one generic sentence for now.
 - [ ] **Area** (`src/data/site.ts`): guessed as "the Chicagoland area".
 - [ ] **Social links** (`src/data/site.ts`): none set, so no icons show yet.
