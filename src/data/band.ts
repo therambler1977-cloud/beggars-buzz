@@ -6,6 +6,7 @@ import type { ImageMetadata } from 'astro';
 import groupPhoto from '../assets/photos/03-pub-78-band-photo.jpg';
 import zachPhoto from '../assets/band/zach.jpg';
 import stevePhoto from '../assets/band/steve.jpg';
+import tomPhoto from '../assets/band/tom.jpg';
 
 // The photo at the top of The Band page.
 export const bandPhoto = { src: groupPhoto, alt: "The five members of Beggar's Buzz on stage at Pub 78" };
@@ -20,7 +21,7 @@ export interface Member {
 // TODO: a short bio for each member. An empty bio ('') is simply left off the page.
 export const members: Member[] = [
   { name: 'Zach Pizzolato', role: 'Vocals & guitar', bio: '', photo: zachPhoto },
-  { name: 'Tom Fairbairn', role: 'Vocals & keys', bio: '' },
+  { name: 'Tom Fairbairn', role: 'Vocals & keys', bio: '', photo: tomPhoto },
   { name: 'Steve Wollard', role: 'Lead guitar', bio: '', photo: stevePhoto },
   { name: 'Alex Hamer', role: 'Bass', bio: '' },
   { name: 'Marx Enuff', role: 'Drums', bio: '' },
