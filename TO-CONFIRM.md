@@ -3,7 +3,7 @@
 Everything unchecked below is placeholder or a guess. `draft` was turned off on Nov 14, 2026, once all sample content was replaced.
 
 - [x] **Shows** (`src/data/shows.ts`): Pub 78 on Jan 30, 2027 added Nov 14, 2026. Address taken from the bar-sites Pub 78 demo (3733 Grand Boulevard). Three past shows (Aug 15, 29, 30) added Nov 15, 2026.
-- [x] **Song list** (`src/data/songs.ts`): the band's 36 songs, added Nov 14, 2026.
+- [x] **Song list** (`src/data/songs.ts`): the band's 36 songs added Nov 14, 2026, plus 8 more Nov 16 (44 total).
 - [ ] **Band members** (`src/data/band.ts`): names and roles added Nov 14, 2026. Bios are blank (hidden) until Zach sends them; photos for all five added Nov 15, 2026 (Marx's source was very small, about 180px wide; swap in a sharper one if you get it).
 - [ ] **Band story** (`src/data/band.ts`): one generic sentence for now.
 - [ ] **Area** (`src/data/site.ts`): guessed as "the Chicagoland area".
