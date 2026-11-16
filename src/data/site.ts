@@ -26,7 +26,7 @@ export const site = {
   // create a form that emails the band, then copy its form ID: the part after
   // /f/ in its endpoint, e.g. 'xyzabcde' from https://formspree.io/f/xyzabcde.
   // Until it is set, the form shows a "not connected yet" note instead of sending.
-  formspreeId: '',
+  formspreeId: 'xzerewwn',
 };
 
 export const nav = [
