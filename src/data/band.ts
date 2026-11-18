@@ -4,6 +4,7 @@
 // then set photo: zach. Members without a photo get the bee.
 import type { ImageMetadata } from 'astro';
 import groupPhoto from '../assets/photos/03-pub-78-band-photo.jpg';
+import marx from '../assets/band/marx.jpg';
 
 // The photo at the top of The Band page.
 export const bandPhoto = { src: groupPhoto, alt: "The five members of Beggar's Buzz on stage at Pub 78" };
@@ -21,7 +22,7 @@ export const members: Member[] = [
   { name: 'Tom Fairbairn', role: 'Vocals & keys', bio: '' },
   { name: 'Steve Wollard', role: 'Lead guitar', bio: '' },
   { name: 'Alex Hamer', role: 'Bass', bio: '' },
-  { name: 'Marx Enuff', role: 'Drums', bio: '' },
+  { name: 'Marx Enuff', role: 'Drums', bio: '', photo: marx },
 ];
 
 // TODO: the band's story, shown above the lineup. One string per paragraph.
