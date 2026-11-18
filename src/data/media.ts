@@ -25,6 +25,7 @@ export interface Video {
 
 export const videos: Video[] = [
   { title: 'Live at Pub 78', file: '/videos/pub-78-live.mp4', poster: '/videos/pub-78-live.jpg' },
+  { title: 'Surrender', file: '/videos/surrender.mp4', poster: '/videos/surrender.jpg' },
   { title: 'Packed dance floor at Pub 78', file: '/videos/pub-78-dance-floor.mp4', poster: '/videos/pub-78-dance-floor.jpg' },
   // { title: 'Live at the Rusty Anchor', url: 'https://www.youtube.com/watch?v=XXXXXXXXXXX' },
 ];
