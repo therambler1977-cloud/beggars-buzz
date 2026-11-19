@@ -102,6 +102,15 @@ const vids = videos.map((v) => ({ ...v, id: v.url ? ytId(v.url) : '' })).filter(
     });
   });
   dlg?.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+
+  // When a clip finishes, jump back to the start and show its cover again,
+  // so it's ready to play from the top.
+  document.querySelectorAll<HTMLVideoElement>('.videos video').forEach((v) => {
+    v.addEventListener('ended', () => {
+      if (document.fullscreenElement === v) document.exitFullscreen().catch(() => {});
+      v.load(); // rewinds to 0:00 and brings back the poster image
+    });
+  });
 </script>
 
 <style>
