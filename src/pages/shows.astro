@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ShowList from '../components/ShowList.astro';
 import PastShows from '../components/PastShows.astro';
+import Social from '../components/Social.astro';
 ---
 <Base title="Shows" description="Where to catch Beggar's Buzz live: upcoming classic rock shows, dates, times and venues, plus where we've played lately.">
   <header class="page-head">
@@ -9,6 +10,10 @@ import PastShows from '../components/PastShows.astro';
       <p class="label">Catch us live</p>
       <h1>Upcoming shows</h1>
       <p class="lede">Come on out, grab a drink and sing along.</p>
+      <div class="follow">
+        <p>Follow us for new dates</p>
+        <Social />
+      </div>
     </div>
   </header>
   <section class="section">
@@ -24,6 +29,8 @@ import PastShows from '../components/PastShows.astro';
   </section>
 </Base>
 <style>
+  .follow { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 16px; margin-top: 20px; }
+  .follow p { margin: 0; font: 500 0.95rem/1.2 var(--label); text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); }
   .narrow { max-width: 860px; }
   .cta { margin-top: 48px; text-align: center; padding: 36px 24px; }
   .cta h2 { font-size: 1.8rem; }
