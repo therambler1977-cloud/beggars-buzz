@@ -16,8 +16,8 @@ export const site = {
 
   // Social links. Leave a value empty ('') to hide that icon.
   social: {
-    facebook: '', // TODO e.g. 'https://www.facebook.com/beggarsbuzz'
-    instagram: '', // TODO
+    facebook: 'https://www.facebook.com/profile.php?id=61577007092126',
+    instagram: 'https://www.instagram.com/beggarsbuzz/',
     youtube: '', // TODO
     tiktok: '',
   },
