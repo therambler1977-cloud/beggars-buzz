@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import { site } from '../../data/site';
 const connected = Boolean(site.formspreeId);
 const endpoint = connected ? `https://formspree.io/f/${site.formspreeId}` : '';
-const types = ['Bar or venue', 'Private party', 'Festival or community event', 'Fundraiser or benefit', 'Corporate event', 'Wedding', 'Something else'];
+const types = ['Bar or venue', 'Private party', 'Festival or community event', 'Fundraiser or benefit', 'Corporate event', 'Something else'];
 ---
 <Base title="Book Us" description="Book Beggar's Buzz, a classic rock cover band, for your bar, venue, private party, festival or fundraiser.">
   <header class="page-head">
