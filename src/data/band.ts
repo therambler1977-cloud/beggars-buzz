@@ -3,7 +3,7 @@
 //   import zach from '../assets/band/zach.jpg';
 // then set photo: zach. Members without a photo get the bee.
 import type { ImageMetadata } from 'astro';
-import groupPhoto from '../assets/photos/03-pub-78-band-photo.jpg';
+import groupPhoto from '../assets/band/group.jpg';
 import zachPhoto from '../assets/band/zach.jpg';
 import stevePhoto from '../assets/band/steve.jpg';
 import tomPhoto from '../assets/band/tom.jpg';
@@ -11,7 +11,7 @@ import alexPhoto from '../assets/band/alex.jpg';
 import marxPhoto from '../assets/band/marx.jpg';
 
 // The photo at the top of The Band page.
-export const bandPhoto = { src: groupPhoto, alt: "The five members of Beggar's Buzz on stage at Pub 78" };
+export const bandPhoto = { src: groupPhoto, alt: "The five members of Beggar's Buzz posing on stage in front of the band logo" };
 
 export interface Member {
   name: string;
