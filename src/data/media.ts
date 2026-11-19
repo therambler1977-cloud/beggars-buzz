@@ -12,6 +12,8 @@ export const captions: Record<string, string> = {
   '05-block-party-from-the-stage.jpg': 'A summer block party, seen from the stage',
   '06-block-party-setup.jpg': 'Setting up for a block party',
   '07-pub-78-three-up-front.jpg': 'Steve, Marx and Zach in full swing at Pub 78',
+  '08-poolside-pavilion.jpg': 'The full band playing poolside under the pavilion',
+  '09-pool-jump.jpg': 'Cooling off after the set, rock & roll style',
 };
 
 // Videos. Two kinds:
