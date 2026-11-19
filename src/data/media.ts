@@ -29,6 +29,7 @@ export interface Video {
 
 export const videos: Video[] = [
   { title: 'Magic Carpet Ride, live at Pub 78', file: '/videos/pub-78-magic-carpet-ride.mp4', poster: '/videos/pub-78-magic-carpet-ride.jpg' },
+  { title: 'Surrender', file: '/videos/surrender.mp4', poster: '/videos/surrender.jpg' },
   { title: 'Live at Pub 78', file: '/videos/pub-78-live.mp4', poster: '/videos/pub-78-live.jpg' },
   { title: 'Packed dance floor at Pub 78', file: '/videos/pub-78-dance-floor.mp4', poster: '/videos/pub-78-dance-floor.jpg' },
   { title: 'Steve on lead guitar at Pub 78', file: '/videos/pub-78-steve-solo.mp4', poster: '/videos/pub-78-steve-solo.jpg', portrait: true },
