@@ -45,4 +45,12 @@ export const songs: Song[] = [
   { title: 'Stay with Me', artist: 'Faces', decade: '70s' },
   { title: 'We\u2019re an American Band', artist: 'Grand Funk Railroad', decade: '70s' },
   { title: 'Mary Jane\u2019s Last Dance', artist: 'Tom Petty and the Heartbreakers', decade: '90s' },
+  { title: 'Sunshine of Your Love', artist: 'Cream', decade: '60s' },
+  { title: 'Long Cool Woman (in a Black Dress)', artist: 'The Hollies', decade: '70s' },
+  { title: 'Free Fallin’', artist: 'Tom Petty', decade: '80s' },
+  { title: 'The Joker', artist: 'Steve Miller Band', decade: '70s' },
+  { title: 'Rockin’ in the Free World', artist: 'Neil Young', decade: '80s' },
+  { title: 'Rebel Rebel', artist: 'David Bowie', decade: '70s' },
+  { title: 'Young Lust', artist: 'Pink Floyd', decade: '70s' },
+  { title: 'Wild Horses', artist: 'The Rolling Stones', decade: '70s' },
 ];

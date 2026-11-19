@@ -14,7 +14,7 @@ const band = {
   sameAs: Object.values(site.social).filter(Boolean),
 };
 const events = upcomingShows()
-  .filter((s) => s.venue !== 'Private event' && !site.draft)
+  .filter((s) => !s.private && !site.draft)
   .map((s) => ({
     '@type': 'MusicEvent',
     name: `${site.name} at ${s.venue}`,

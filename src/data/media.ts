@@ -9,6 +9,9 @@ export const captions: Record<string, string> = {
   '02-pub-78-crowd.jpg': 'A full house at Pub 78',
   '03-pub-78-band-photo.jpg': 'The band after the show at Pub 78',
   '04-pub-78-guitar-and-bass.jpg': 'Guitar and bass up front at Pub 78',
+  '05-block-party-from-the-stage.jpg': 'A summer block party, seen from the stage',
+  '06-block-party-setup.jpg': 'Setting up for a block party',
+  '07-pub-78-three-up-front.jpg': 'Steve, Marx and Zach in full swing at Pub 78',
 };
 
 // Videos. Two kinds:
@@ -21,11 +24,14 @@ export interface Video {
   file?: string;
   poster?: string;
   url?: string;
+  portrait?: boolean; // true for a clip filmed upright on a phone
 }
 
 export const videos: Video[] = [
-  { title: 'Live at Pub 78', file: '/videos/pub-78-live.mp4', poster: '/videos/pub-78-live.jpg' },
+  { title: 'Magic Carpet Ride, live at Pub 78', file: '/videos/pub-78-magic-carpet-ride.mp4', poster: '/videos/pub-78-magic-carpet-ride.jpg' },
   { title: 'Surrender', file: '/videos/surrender.mp4', poster: '/videos/surrender.jpg' },
+  { title: 'Live at Pub 78', file: '/videos/pub-78-live.mp4', poster: '/videos/pub-78-live.jpg' },
   { title: 'Packed dance floor at Pub 78', file: '/videos/pub-78-dance-floor.mp4', poster: '/videos/pub-78-dance-floor.jpg' },
+  { title: 'Steve on lead guitar at Pub 78', file: '/videos/pub-78-steve-solo.mp4', poster: '/videos/pub-78-steve-solo.jpg', portrait: true },
   // { title: 'Live at the Rusty Anchor', url: 'https://www.youtube.com/watch?v=XXXXXXXXXXX' },
 ];

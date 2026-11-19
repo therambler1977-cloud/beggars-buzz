@@ -1,18 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
 import ShowList from '../components/ShowList.astro';
+import PastShows from '../components/PastShows.astro';
 ---
-<Base title="Upcoming Shows" description="Where to catch Beggar's Buzz live: upcoming classic rock shows, dates, times and venues.">
+<Base title="Shows" description="Where to catch Beggar's Buzz live: upcoming classic rock shows, dates, times and venues, plus where we've played lately.">
   <header class="page-head">
     <div class="wrap">
       <p class="label">Catch us live</p>
       <h1>Upcoming shows</h1>
-      <p class="lede">Come on out, grab a drink and sing along. Private events aren't listed here.</p>
+      <p class="lede">Come on out, grab a drink and sing along.</p>
     </div>
   </header>
   <section class="section">
     <div class="wrap narrow">
       <ShowList />
+      <PastShows />
       <div class="cta card frame">
         <h2>Want us at your place?</h2>
         <p>We play bars, private parties, festivals and fundraisers.</p>

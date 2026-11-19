@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { site } from '../../data/site';
-const connected = Boolean(site.web3formsKey);
+const connected = Boolean(site.formspreeId);
+const endpoint = connected ? `https://formspree.io/f/${site.formspreeId}` : '';
 const types = ['Bar or venue', 'Private party', 'Festival or community event', 'Fundraiser or benefit', 'Corporate event', 'Wedding', 'Something else'];
 ---
 <Base title="Book Us" description="Book Beggar's Buzz, a classic rock cover band, for your bar, venue, private party, festival or fundraiser.">
@@ -14,15 +15,12 @@ const types = ['Bar or venue', 'Private party', 'Festival or community event', '
   </header>
   <section class="section">
     <div class="wrap layout">
-      <form class="card frame" id="book" action="https://api.web3forms.com/submit" method="POST" data-connected={connected ? '1' : ''}>
+      <form class="card frame" id="book" action={endpoint} method="POST" data-connected={connected ? '1' : ''}>
         {!connected && (
-          <p class="notice" role="note">The booking form isn't connected yet, so messages can't be sent. (Site owner: add the Web3Forms key in <code>src/data/site.ts</code>.)</p>
+          <p class="notice" role="note">The booking form isn't switched on yet, so requests can't be sent from here just yet. Check back soon.</p>
         )}
-        <input type="hidden" name="access_key" value={site.web3formsKey} />
-        <input type="hidden" name="subject" value={`New booking request from ${site.name} website`} />
-        <input type="hidden" name="from_name" value={`${site.name} website`} />
-        <input type="hidden" name="redirect" value={`${site.url}/book/thanks/`} />
-        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <input type="hidden" name="_subject" value={`New booking request from the ${site.name} website`} />
+        <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
         <div class="row">
           <label><span>Your name <span class="req">*</span></span><input name="name" required autocomplete="name" /></label>
@@ -69,7 +67,7 @@ const types = ['Bar or venue', 'Private party', 'Festival or community event', '
 
 <script>
   // Send without leaving the page; if JavaScript is off the form posts normally
-  // and Web3Forms redirects to /book/thanks/.
+  // and Formspree shows its own thank-you page.
   const form = document.querySelector<HTMLFormElement>('#book')!;
   const status = form.querySelector<HTMLElement>('.status')!;
   const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
@@ -81,14 +79,13 @@ const types = ['Bar or venue', 'Private party', 'Festival or community event', '
     status.textContent = 'Sending...';
     try {
       const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.message);
+      if (!res.ok) throw new Error(String(res.status));
       form.reset();
       status.className = 'status ok';
       status.textContent = "Thanks! Your request is in, and we'll be in touch soon.";
     } catch {
       status.className = 'status err';
-      status.textContent = "Sorry, that didn't go through. Please try again in a minute, or reach us on social media.";
+      status.textContent = "Sorry, that didn't go through. Please check the email address and try again in a minute.";
     } finally {
       btn.disabled = false;
     }

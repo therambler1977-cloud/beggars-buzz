@@ -19,6 +19,7 @@ const list = upcomingShows().slice(0, limit ?? 999);
           <h3>{s.venue}</h3>
           <p class="meta">
             {[s.city, s.time].filter(Boolean).join(' · ')}
+            {s.private && <span class="note">Private event</span>}
             {s.note && <span class="note">{s.note}</span>}
           </p>
         </div>
