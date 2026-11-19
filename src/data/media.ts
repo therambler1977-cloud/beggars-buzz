@@ -12,7 +12,7 @@ export const captions: Record<string, string> = {
   '05-block-party-from-the-stage.jpg': 'A summer block party, seen from the stage',
   '06-block-party-setup.jpg': 'Setting up for a block party',
   '07-pub-78-three-up-front.jpg': 'Steve, Marx and Zach in full swing at Pub 78',
-  '08-poolside-pavilion.jpg': 'The full band playing poolside under the pavilion',
+  '08-poolside-pavilion.jpg': 'The full band playing poolside at the Village Field Club',
   '09-pool-jump.jpg': 'Cooling off after the set, rock & roll style',
 };
 
@@ -31,7 +31,7 @@ export interface Video {
 
 export const videos: Video[] = [
   { title: 'Magic Carpet Ride, live at Pub 78', file: '/videos/pub-78-magic-carpet-ride.mp4', poster: '/videos/pub-78-magic-carpet-ride.jpg' },
-  { title: 'Surrender', file: '/videos/surrender.mp4', poster: '/videos/surrender.jpg' },
+  { title: 'Surrender, live at Village Field Club', file: '/videos/surrender.mp4', poster: '/videos/surrender.jpg' },
   { title: 'Dead Flowers, live at Pub 78', file: '/videos/pub-78-live.mp4', poster: '/videos/pub-78-live.jpg' },
   { title: 'Rock & Roll, live at Pub 78', file: '/videos/rock-and-roll.mp4', poster: '/videos/rock-and-roll.jpg' },
   { title: 'Steve on lead guitar at Pub 78', file: '/videos/pub-78-steve-solo.mp4', poster: '/videos/pub-78-steve-solo.jpg', portrait: true },
