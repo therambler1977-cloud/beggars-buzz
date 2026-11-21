@@ -7,7 +7,7 @@ export const site = {
   decades: ['60s', '70s', '80s', '90s'],
   description:
     "Beggar's Buzz is a classic rock cover band playing the rock & roll songs you love from the 60s, 70s, 80s and 90s. See upcoming shows or book the band for your venue or party.",
-  // TODO: the area you play, e.g. "Chicago's western suburbs". Shown on the home page and to Google.
+  // The area the band plays. Shown on the home page and to Google.
   area: 'the Chicagoland area',
 
   // While this is true, every page shows a thin "sample content" bar so nobody mistakes
