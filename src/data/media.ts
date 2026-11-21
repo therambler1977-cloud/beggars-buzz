@@ -34,6 +34,7 @@ export const videos: Video[] = [
   { title: 'Surrender, live at Village Field Club', file: '/videos/surrender.mp4', poster: '/videos/surrender.jpg' },
   { title: 'Dead Flowers, live at Pub 78', file: '/videos/pub-78-live.mp4', poster: '/videos/pub-78-live.jpg' },
   { title: 'Rock & Roll, live at Pub 78', file: '/videos/rock-and-roll.mp4', poster: '/videos/rock-and-roll.jpg' },
-  { title: 'Steve on lead guitar at Pub 78', file: '/videos/pub-78-steve-solo.mp4', poster: '/videos/pub-78-steve-solo.jpg', portrait: true },
+  { title: 'It’s Still Rock and Roll to Me, live at a block party', file: '/videos/still-rock-and-roll.mp4', poster: '/videos/still-rock-and-roll.jpg' },
+  { title: 'Free Bird, live at Pub 78 with Steve on lead guitar', file: '/videos/pub-78-steve-solo.mp4', poster: '/videos/pub-78-steve-solo.jpg', portrait: true },
   // { title: 'Live at the Rusty Anchor', url: 'https://www.youtube.com/watch?v=XXXXXXXXXXX' },
 ];
