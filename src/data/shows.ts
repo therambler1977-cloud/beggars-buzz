@@ -34,7 +34,7 @@ export const shows: Show[] = [
     city: 'Brookfield, IL',
     address: '3733 Grand Boulevard, Brookfield, IL 60513',
   },
-  { date: '2026-08-29', time: '2:00 PM – 4:00 PM', venue: 'Private event', city: 'Brookfield, IL', private: true },
+  { date: '2026-08-29', time: '2:00 PM – 4:00 PM', venue: 'Block Party', city: 'Brookfield, IL', private: true },
   { date: '2026-08-30', time: '1:00 PM – 4:00 PM', venue: 'Village Field Club', city: 'La Grange Park, IL', private: true },
   {
     date: '2027-01-30',
