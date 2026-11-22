@@ -29,7 +29,11 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <meta property="og:image" content={`${site.url}/og-image.jpg`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="675" />
+    <meta property="og:image:alt" content="Beggar's Buzz, classic rock cover band" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${site.url}/og-image.jpg`} />
     {site.draft && <meta name="robots" content="noindex" />}
     <Schema />
   </head>

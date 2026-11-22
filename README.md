@@ -1,6 +1,6 @@
 # Beggar's Buzz website
 
-Website for [Beggar's Buzz](https://www.beggarsbuzz.com), a classic rock cover band. It's a static site built with [Astro](https://astro.build) and hosted on Cloudflare Pages.
+Website for [Beggar's Buzz](https://beggarsbuzz.com), a classic rock cover band. It's a static site built with [Astro](https://astro.build) and hosted on Cloudflare Pages.
 
 ## Run it locally
 
@@ -41,4 +41,4 @@ Search the code for `TODO` to find what still needs real content, and see `TO-CO
 1. In Cloudflare, go to Workers & Pages > Create > Pages > Connect to Git, and pick this repository.
 2. Build settings: framework preset **Astro**, build command `npm run build`, output directory `dist`.
 3. Every push to `main` publishes the site; other branches get their own preview link.
-4. To go live, add `www.beggarsbuzz.com` (and `beggarsbuzz.com`) as custom domains in the Pages project and update DNS as Cloudflare instructs. If the domain has email, copy its MX records first so email keeps working.
+4. The site is live at `beggarsbuzz.com` (a custom domain on the Pages project, connected Nov 22, 2026). Email to info@beggarsbuzz.com is forwarded by Cloudflare Email Routing. To also serve `www.beggarsbuzz.com`, add it as a custom domain or redirect it to `beggarsbuzz.com`.

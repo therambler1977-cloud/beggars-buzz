@@ -2,7 +2,9 @@
 
 export const site = {
   name: "Beggar's Buzz",
-  url: 'https://www.beggarsbuzz.com',
+  url: 'https://beggarsbuzz.com',
+  // Public contact email (forwards to Zach through Cloudflare Email Routing). Shown on Book Us.
+  email: 'info@beggarsbuzz.com',
   tagline: 'Rock & roll songs you love',
   decades: ['60s', '70s', '80s', '90s'],
   description:
